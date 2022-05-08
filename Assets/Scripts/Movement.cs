@@ -5,11 +5,17 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 	
-	public bool isGrounded = false; 
+	public bool isGrounded = false;
+	public float thrust = 1.0f; 
+
+	private Rigidbody2D rb2D;	
+	
+	
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+		//Gain Access to the rigidbody
+		rb2D = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -19,9 +25,12 @@ public class Movement : MonoBehaviour
 		
         //Static Jumping
 		//On Space Bar Pressed
+		if(Input.GetKeyDown(KeyCode.Space)){
 			//If isGrounded
-				//Do Jump Command 
-		
+			if(isGrounded){
+				rb2D.AddForce(transform.up * thrust);
+			}
+		}
 		
 				
 		//Left Movement
@@ -30,9 +39,12 @@ public class Movement : MonoBehaviour
     }
 	
 	//On Collision Exit
+	void OnCollisionExit2D(Collision2D c){
 		//If Collision Tag is Ground
-			//isGrounded = false
-			
+		if(c.gameObject.tag == "ground"){
+			isGrounded = false;
+		}
+	}
 	//On Collision Enter
 	void OnCollisionEnter2D(Collision2D c) {
         //If Collision Tag is Ground
