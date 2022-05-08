@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Balloon : MonoBehaviour
 {
-    public float force;
+    private float force =15;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +19,9 @@ public class Balloon : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D c)
     {
-        Debug.Log("Butts");
-
         if (c.gameObject.CompareTag("Player"))
         {
-            Debug.Log("DoubleButts");
-            c.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up*force, ForceMode2D.Impulse);
+            c.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(c.gameObject.GetComponent<Rigidbody2D>().velocity.x, force);
             Destroy(gameObject);
         }
     }
