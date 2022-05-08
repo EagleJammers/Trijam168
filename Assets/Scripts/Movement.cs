@@ -75,8 +75,12 @@ public class Movement : MonoBehaviour
 			//isGrounded = True
 			isGrounded = true;
 		}
-    }
+  }
 
+	public void resetHSpeed()
+	{
+		this.speed = this.groundSpeed;
+	}
 
 
 }

@@ -8,13 +8,13 @@ public class Balloon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnTriggerEnter2D(Collider2D c)
@@ -22,6 +22,7 @@ public class Balloon : MonoBehaviour
         if (c.gameObject.CompareTag("Player"))
         {
             c.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(c.gameObject.GetComponent<Rigidbody2D>().velocity.x, force);
+            c.gameObject.GetComponent<Movement>().resetHSpeed();
             Destroy(gameObject);
         }
     }
