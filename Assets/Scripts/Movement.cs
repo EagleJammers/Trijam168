@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
 	
-	private bool isGrounded; 
+	public bool isGrounded = false; 
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +34,14 @@ public class Movement : MonoBehaviour
 			//isGrounded = false
 			
 	//On Collision Enter
-		//If Collision Tag is Ground	
+	void OnCollisionEnter2D(Collision2D c) {
+        //If Collision Tag is Ground
+		if(c.gameObject.tag == "ground"){
 			//isGrounded = True 
+			isGrounded = true; 
+		}
+    }
+			
+			
 
 }
