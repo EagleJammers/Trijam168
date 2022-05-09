@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Movement : MonoBehaviour
 {
+	
+	
 
 	public bool isGrounded = false;
 	public float thrust = 1.0f;
@@ -29,6 +31,10 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+		if(this.transform.position.y < -50){
+			SceneManager.LoadScene("1");
+			
+		}
 		if(!this.isGrounded){
 			if(this.speed > this.airSpeed){
 				this.speed -= .002f;

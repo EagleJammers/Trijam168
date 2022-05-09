@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Balloon : MonoBehaviour
 {
-    private float force =15;
+    private float force = 15;
     // Start is called before the first frame update
     void Start()
     {
