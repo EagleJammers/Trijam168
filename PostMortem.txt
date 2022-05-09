@@ -1,0 +1,38 @@
+Ray 5/8
+
+- Adding sample scene to the git ignore was successful!
+	Must use SampleScene* to ignore meta data as well.
+	As a side note, it should be mentioned that META DATA IS USUALLY INCREDIBLY IMPORTANT. We shouldn't ignore it willy-nilly,
+	but in the case of SampleScene, it should not be pushed to the main.
+
+
+- Feature branch strategy dramatically reduced merge conflicts and zombie issues!
+	I noticed a weakness in this branching pattern is applying hotfixes, however. 
+
+	Example: Players were able to "moon jump" by making contact with the sides of walls, which would set their isGrounded to true.
+	If the jump input was held, they would get massive velocity inputs. Really fun to watch/play with, but not intended!
+
+	It was hotfixed by adding another condition (y velocity == 0) and pushing directly to main. This was done because it didn't quite fit the
+	parameters of it's own feature branch.
+	
+	I a zombie issue was created, and I think it happened when one pulled from main, worked on their feature branch, and merged it to main without merging
+	main to their feature branch first. Thus it was that their old code, sans hotfix, could've been seen by git as a new value, and overwrote the hotfix.
+	When their feature branch was merged to their main, and their main pushed, the hotfix disappeared.
+	
+	This exposes two valuable questions:
+		What is the best way to apply small changes that don't deserve their own feature branches, and are not in scope for our current feature branches?
+		How do we make sure we get any hotfixes from remote main to our local feature branches to kill zombie issues?
+		
+	More research and practice is needed to uncover the answers.
+
+	
+- Less time for planning (1 - 1.5 hrs) was TOTALLY enough to come up with an abundance of ideas, discuss pros and cons, whiteboard the design, and pick a game to make!
+	It stands to reason that with a larger team, this may take more time. However, with our group of 3 this time around, the more rigid time constraints
+	were not an issue. Were it not for other issues, we would've been able to use our 3 hours of jam time in under five hours.
+
+	
+- We spent 30 or 40 minutes with 2/3rds of our team unable to work due to having different Unity versions.
+	While we still found a way to put this time to good use, it was simply not as efficient.
+	We should find and agree upon a standard unity release to use every time. This way, if one knows the system they will be using does not have it,
+	they can install it during the first hour and a half of planning phase. Meetings should begin by confirming everyone has the same version ready to roll
+	I would think 2020LTS or 2021LTS should be the go-to
