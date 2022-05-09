@@ -70,7 +70,7 @@ public class Movement : MonoBehaviour
 	void OnCollisionEnter2D(Collision2D c) {
 
         //If Collision Tag is Ground
-		if(c.gameObject.CompareTag("ground")){
+		if(c.gameObject.CompareTag("ground") && rb2D.velocity.y ==0){
 			this.speed = this.groundSpeed;
 			//isGrounded = True
 			isGrounded = true;
